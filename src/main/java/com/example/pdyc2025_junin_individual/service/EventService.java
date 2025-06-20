@@ -3,6 +3,7 @@ package com.example.pdyc2025_junin_individual.service;
 import com.example.pdyc2025_junin_individual.model.*;
 import com.example.pdyc2025_junin_individual.repository.ArtistRepository;
 import com.example.pdyc2025_junin_individual.repository.EventRepository;
+import com.example.pdyc2025_junin_individual.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,8 @@ import java.util.Optional;
 
 @Service
 public class EventService {
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private EventRepository eventRepository;
     @Autowired
@@ -83,5 +86,14 @@ public class EventService {
             e.setState(EventState.CANCELED);
         }
         return eventRepository.save(e);
+    }
+    private void logUserNotifications(Event event) {
+        List<String> userFollowers = userRepository.findAll().stream()
+                .filter(u -> u.getFollowedArtists().stream().anyMatch(event.getArtists()::contains) ||
+                        u.getFavoriteEvents().contains(event))
+                .map(User::getUsername)
+                .toList();
+
+        System.out.println("[NOTIFICACIONES] Usuarios a notificar por cambio en evento '" + event.getName() + "': " + userFollowers);
     }
 }

@@ -3,6 +3,7 @@ package com.example.pdyc2025_junin_individual.controller;
 import com.example.pdyc2025_junin_individual.dto.ArtistDTO;
 import com.example.pdyc2025_junin_individual.dto.EventDTO;
 import com.example.pdyc2025_junin_individual.model.*;
+import com.example.pdyc2025_junin_individual.repository.UserRepository;
 import com.example.pdyc2025_junin_individual.service.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
