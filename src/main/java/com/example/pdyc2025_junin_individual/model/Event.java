@@ -61,5 +61,4 @@ public class Event {
     public Set<Artist> getArtists() {
         return artists;
     }
-
 }
