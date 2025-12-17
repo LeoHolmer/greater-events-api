@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>pdyc2025-junin-individual</artifactId>
+	<artifactId>great-events</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>pdyc2025-junin-individual</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Great Events</name>
+	<description>REST API for Music Event Management - Academic Project</description>
 	<url/>
 	<licenses>
 		<license/>
