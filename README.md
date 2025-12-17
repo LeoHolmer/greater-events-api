@@ -38,6 +38,21 @@ Proyecto individual para la materia Programación y Diseño de Computadoras (PDy
    ./mvnw spring-boot:run
    ```
 
+## Documentación de la API
+
+La documentación completa de la API está disponible a través de Swagger UI:
+
+- **Swagger UI**: http://localhost:8080/swagger-ui.html
+- **OpenAPI JSON**: http://localhost:8080/v3/api-docs
+
+### Autenticación
+
+Para acceder a los endpoints protegidos, incluye el token JWT en el header `Authorization`:
+
+```
+Authorization: Bearer <tu-token-jwt>
+```
+
 ## Tests
 
 Ejecuta los tests con:

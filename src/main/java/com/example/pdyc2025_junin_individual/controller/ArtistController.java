@@ -3,6 +3,12 @@ package com.example.pdyc2025_junin_individual.controller;
 import com.example.pdyc2025_junin_individual.dto.ArtistDTO;
 import com.example.pdyc2025_junin_individual.model.*;
 import com.example.pdyc2025_junin_individual.service.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +17,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin/artists")
+@Tag(name = "Artists", description = "API para gestión de artistas (solo administradores)")
+@SecurityRequirement(name = "bearerAuth")
 public class ArtistController {
     @Autowired
     private ArtistService service;
@@ -20,7 +28,12 @@ public class ArtistController {
     private ModelMapper modelMapper;
 
     @GetMapping
-    public List<ArtistDTO> getAll(@RequestParam(required = false) Genre genre,
+    @Operation(summary = "Obtener todos los artistas", description = "Obtiene una lista de todos los artistas con filtro opcional por género")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lista de artistas obtenida exitosamente"),
+            @ApiResponse(responseCode = "401", description = "No autorizado")
+    })
+    public List<ArtistDTO> getAll(@Parameter(description = "Filtrar por género musical") @RequestParam(required = false) Genre genre,
                                   @RequestHeader("Authorization") String token) throws Exception {
         authService.authorize(token);
         return service.getAll(genre).stream()
@@ -38,6 +51,11 @@ public class ArtistController {
     }
 
     @PostMapping
+    @Operation(summary = "Crear un nuevo artista", description = "Crea un nuevo artista en el sistema")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Artista creado exitosamente"),
+            @ApiResponse(responseCode = "401", description = "No autorizado")
+    })
     public ArtistDTO create(@RequestBody ArtistDTO dto,
                             @RequestHeader("Authorization") String token) throws Exception {
         authService.authorize(token);
