@@ -1,6 +1,7 @@
 # PDyC2025 - Junín - Individual
 
 Proyecto individual para la materia Programación Distribuida y Concurrente (PDyC) 2025, sede Junín.
+aplicación para una comunidad de usuarios vinculados a eventos musicales mediante un web service Restful que implementa la arquitectura Rest.
 
 ## Tecnologías Utilizadas
 
@@ -11,6 +12,7 @@ Proyecto individual para la materia Programación Distribuida y Concurrente (PDy
 - **Maven** (gestión de dependencias)
 
 ## Características
+
 
 - Gestión de entidades JPA
 - API RESTful
