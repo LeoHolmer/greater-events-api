@@ -1,6 +1,6 @@
 # PDyC2025 - Junín - Individual
 
-Proyecto individual para la materia Programación y Diseño de Computadoras (PDyC) 2025, sede Junín.
+Proyecto individual para la materia Programación Distribuida y Concurrente (PDyC) 2025, sede Junín.
 
 ## Tecnologías Utilizadas
 
